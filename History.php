@@ -18,9 +18,9 @@ $personnes = $historyRepository->findAll();
 
         ?>
         <tr>
-            <td ><?= $personne->ByWho?></td>
-            <td><?= $personne->Date ?></td>
-            <td><?= $personne->Type ?></td>
+            <td ><?= $personne->bywho?></td>
+            <td><?= $personne->date ?></td>
+            <td><?= $personne->type ?></td>
             <td> <?= $personne->modification ?></td>
 
 
