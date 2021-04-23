@@ -34,3 +34,6 @@ $personnes = $historyRepository->findAll();
 
     }
     ?>
+</table>
+</body>
+</html>
