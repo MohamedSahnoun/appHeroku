@@ -35,9 +35,9 @@ class Repository
     {
        /* $request_type = "SELECT * FROM ".$this->tableName;*/
         echo "iam in the verification";
-        $request = "SELECT * FROM ".$this->tableName." where username= ? and password=?";
+        $request = "SELECT * FROM ".$this->tableName." where username= '".$a."' and password='".$b."'";
         $response =$this->bd->prepare($request);
-        $response->execute([$a,$b]);
+        $response->execute();
         return $response->fetchAll(PDO::FETCH_OBJ);;
 
 
