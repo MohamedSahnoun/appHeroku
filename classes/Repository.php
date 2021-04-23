@@ -17,7 +17,7 @@ class Repository
     public function findAll() {
         $request = "select * from ".$this->tableName;
         $response =$this->bd->prepare($request);
-        $response->execute([]);
+        $response->execute();
         return $response->fetchAll(PDO::FETCH_OBJ);
     }
 

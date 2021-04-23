@@ -19,18 +19,18 @@ $personnes = $studentRepository->findAll();
 
     ?>
     <tr>
-        <td class="id id<?= $personne->ID?>"><?= $personne->ID?></td>
-        <td class="firstname id<?= $personne->ID?>"><?= $personne->Firstname ?></td>
-        <td class="lastname id<?= $personne->ID?>"><?= $personne->Lastname ?></td>
-        <td class="age id<?= $personne->ID?>"> <?= $personne->Age ?></td>
-        <td class="pro id<?= $personne->ID?>"><?= $personne->Profession ?></td>
+        <td class="id id<?= $personne->id?>"><?= $personne->id?></td>
+        <td class="firstname id<?= $personne->id?>"><?= $personne->firstname ?></td>
+        <td class="lastname id<?= $personne->id?>"><?= $personne->lastname ?></td>
+        <td class="age id<?= $personne->id?>"> <?= $personne->age ?></td>
+        <td class="pro id<?= $personne->id?>"><?= $personne->profession ?></td>
 
 
 
-        <td class="img id<?= $personne->ID?>"><?php
-            if(!is_null($personne->Image)){
+        <td class="img id<?= $personne->id?>"><?php
+            if(!is_null($personne->image)){
                ?>
-                <img height="100px" width="100px" src="data:image/jpg;base64,<?=$personne->Image?>">
+                <img height="100px" width="100px" src="data:image/jpg;base64,<?=$personne->image?>">
                 <?php
             }
 
@@ -38,9 +38,9 @@ $personnes = $studentRepository->findAll();
 
         <td>
             <form class="deletebtn" action="supprimer.php" method="POST">
-                <input class="btn btn-dark" type="submit" value="Delete" name="<?= $personne->ID?>">
+                <input class="btn btn-dark" type="submit" value="Delete" name="<?= $personne->id?>">
             </form>
-            <input class="btn btn-dark edit" type="submit" value="Edit" id="<?= $personne->ID?>">
+            <input class="btn btn-dark edit" type="submit" value="Edit" id="<?= $personne->id?>">
         </td>
 
 
