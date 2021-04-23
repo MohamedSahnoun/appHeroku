@@ -23,9 +23,9 @@ class Repository
 
 
     public function deleteStudent($id){
-        $request = "DELETE FROM ".$this->tableName." WHERE id=? ";
+        $request = "DELETE FROM ".$this->tableName." WHERE id='".$id."'";
         $response =$this->bd->prepare($request);
-        $response->execute([$id]);
+        $response->execute();
         $this->updateHistory($_SESSION['user'],"delete student","delete the student number ".$id);
         return $response->fetchAll(PDO::FETCH_OBJ);
 
@@ -43,30 +43,30 @@ class Repository
 
     }
     public function updateHistory($num,$firstname,$age){
-        $request_history = "INSERT INTO history (ByWho,Date,Type,modification) VALUES (?,NOW(),?,?)";
+        $request_history = "INSERT INTO history (ByWho,Date,Type,modification) VALUES ('" . $num. "',NOW(),'" . $firstname . "','" . $age . "')";
         $response =$this->bd->prepare($request_history);
-        $response->execute([$num,$firstname,$age]);
+        $response->execute();
         return $response->fetchAll(PDO::FETCH_OBJ);
     }
     public function addStudent($num,$firstname,$lastname,$age,$profession,$image){
-        $request = "INSERT INTO ".$this->tableName." (ID,Firstname,Lastname,Age,Profession,Image) VALUES (?,?,?,?,?,?)";
+        $request = "INSERT INTO ".$this->tableName." (ID,Firstname,Lastname,Age,Profession,Image) VALUES ('" . $num . "','" . $firstname . "','" . $lastname . "','" . $age . "','" . $profession . "','" . $image . "')";
         $this->updateHistory($_SESSION['user'],"adding student","added the student number ".$num);
         $response =$this->bd->prepare($request);
-        $response->execute([$num,$firstname,$lastname,$age,$profession,$image]);
+        $response->execute();
         return $response->fetchAll(PDO::FETCH_OBJ);
     }
     public function updateStudent($num,$firstname,$lastname,$age,$profession,$image){
-        $request = "UPDATE ".$this->tableName." SET Firstname= ?,Lastname= ?,Age= ?,Profession= ?,Image= ? where ID = ?";
+        $request = "UPDATE ".$this->tableName." SET Firstname= '" . $firstname . "',Lastname= '" . $lastname . "',Age= '" . $age . "',Profession= '" . $profession . "',Image= '" . $image . "' where ID = '" . $num . "'";
         $response =$this->bd->prepare($request);
-        $response->execute([$firstname,$lastname,$age,$profession,$image,$num]);
+        $response->execute();
         return $response->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function findById($id) {
-        $request = "select * from ".$this->tableName ." where id = ?";
+        $request = "select * from ".$this->tableName ." where id = '" . $id . "'";
         $this->updateHistory($_SESSION['user'],"find student","find the student number ".$id);
         $response =$this->bd->prepare($request);
-        $response->execute([$id]);
+        $response->execute();
         return $response->fetch(PDO::FETCH_OBJ);
     }
 }
